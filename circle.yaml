@@ -1,0 +1,17 @@
+machine:
+  services:
+    - docker
+
+
+dependencies:
+  override:
+    - docker info
+    - docker build -t manlulu/circleci .
+
+
+deployment:
+  hub:
+    branch: master
+    commands:
+      - docker login -e $fletn3000@hotmail.comm -u $manlulu -p $likom88
+      - docker push manlulu/circleci
