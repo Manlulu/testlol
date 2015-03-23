@@ -2,16 +2,10 @@ machine:
   services:
     - docker
 
-
 dependencies:
   override:
-    - docker info
-    - docker build -t manlulu/circleci .
+    - docker pull tomcat
 
-
-deployment:
-  hub:
-    branch: master
-    commands:
-      - docker login -e $fletn3000@hotmail.comm -u $manlulu -p $likom88
-      - docker push manlulu/circleci
+test:
+  override:
+    - docker run -d -p 8080:8080 -v /home/ubuntu/Daniel:/usr/local/tomcat/webapps/ROOT/ tomcat
